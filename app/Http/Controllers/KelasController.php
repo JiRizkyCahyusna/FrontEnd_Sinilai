@@ -61,42 +61,30 @@ class KelasController extends Controller
      */
    public function edit($kode_kelas)
 {
-    // Ambil data kelas berdasarkan NIDN
-        $response = Http::get("http://localhost:8080/kelas/{$kode_kelas}");
-
-        // Periksa apakah berhasil
-        if ($response->successful()) {
-            $kelas = (object) $response->json();
-            return view('edit_kelas', ['kelas' => $kelas]);
-        }
-
-        return redirect()->route('kelas.index')
-            ->withErrors(['msg' => 'Gagal mengambil data kelas']);
-
+     $response = Http::get("http://localhost:8080/kelas/{$kode_kelas}");
+    if ($response->successful()) {
+        $kelas = (object) $response->json(); // <- ubah di sini
+        // dd($kelas);
+        return view('edit_kelas', ['kelas' => $kelas]);
+    }
+    return redirect()->route('kelas.index')->with('error', 'Data kelas tidak ditemukan.');
 }
 
 
 public function update(Request $request, $kode_kelas)
 {
-    // Validasi form
-        $request->validate([
+    $validatedData = $request->validate([
         'kode_kelas' => 'required|string|max:255',
         'nama_kelas' => 'required|string|max:20',
-        ]);
+    ]);
 
-        // Kirim data ke backend API
-        $response = Http::put("http://localhost:8080/kelas/{$kode_kelas}", [
-            'kode_kelas' => $request->kode_kelas,
-            'nama_kelas' => $request->nama_kelas,
-        ]);
+    $response = Http::put("http://localhost:8080/kelas/{$kode_kelas}", $validatedData);
 
-        // Cek hasil update
-        if ($response->successful()) {
-            return redirect()->route('kelas.index')->with('success', 'Data kelas berhasil diperbarui');
- }
+    if ($response->successful()) {
+        return redirect()->route('kelas.index')->with('success', 'Data kelas berhasil diperbarui.');
+    }
 
-        // Jika gagal
-        return back()->withErrors(['msg' => 'Gagal memperbarui data kelas'])->withInput();
+    return redirect()->back()->withErrors('Gagal memperbarui data kelas.')->withInput();
     }
 
 
@@ -105,7 +93,7 @@ public function update(Request $request, $kode_kelas)
      */
     public function destroy($kode_kelas)
     {
-                $response = Http::delete("http://localhost:8080/kelas/{$kode_kelas}");
+    $response = Http::delete("http://localhost:8080/kelas/{$kode_kelas}");
 
     if ($response->successful()) {
         return redirect()->route('kelas.index')->with('success', 'Data kelas berhasil dihapus.');
