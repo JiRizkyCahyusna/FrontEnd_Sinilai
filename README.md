@@ -29,7 +29,7 @@ composer install
 
 ### 3. Mengcopy File Environment
 ```bash
-cp .env.example .env
+cp env example .env
 ```
 
 
