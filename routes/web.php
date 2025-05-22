@@ -1,0 +1,14 @@
+<?php
+
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MahasiswaController;
+use App\Http\Controllers\KelasController;
+use App\Http\Controllers\ProdiController;
+
+Route::get('/', function () {
+    return view('dashboard');
+});
+
+Route::resource('mahasiswa', MahasiswaController::class);
+Route::resource('kelas', KelasController::class);
+Route::resource('prodi', ProdiController::class);
