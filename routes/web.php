@@ -12,3 +12,5 @@ Route::get('/', function () {
 Route::resource('mahasiswa', MahasiswaController::class);
 Route::resource('kelas', KelasController::class);
 Route::resource('prodi', ProdiController::class);
+
+Route::get('/mahasiswa/export/pdf', [MahasiswaController::class, 'exportPdf'])->name('mahasiswa.export.pdf');

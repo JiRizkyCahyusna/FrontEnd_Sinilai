@@ -56,6 +56,13 @@
         <a href="{{ route('mahasiswa.create') }}" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
           + Tambah Data
         </a>
+                <form action="{{ route('mahasiswa.export.pdf') }}" method="GET">
+                    <button type="submit" class="bg-blue-500 text-white p-2 mt-4 rounded hover:bg-blue-600">
+                        🖨 Cetak
+                    </button>
+                </form>
+  </div>
+  
        <form method="GET" action="{{ route('mahasiswa.index') }}" class="relative w-64">
   <input 
     id="searchInput" 

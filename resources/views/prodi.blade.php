@@ -6,6 +6,20 @@
   <title>Data prodi - Sistem Akademik</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/feather-icons"></script>
+  <style>
+    /* Styling khusus saat print */
+    @media print {
+      aside, /* sembunyikan sidebar */
+      button { /* sembunyikan tombol */
+        display: none !important;
+      }
+      main {
+        padding: 0;
+        margin: 0;
+        width: 100%;
+      }
+    }
+  </style>
 </head>
 <body class="bg-gray-100 font-sans min-h-screen flex">
 
@@ -50,6 +64,11 @@
       <h2 class="text-3xl font-bold text-gray-700 mb-6 flex items-center gap-2">
         <i data-feather="book" class="text-blue-600"></i> Data prodi
       </h2>
+          <!-- Tombol Cetak -->
+      <button onclick="window.print()" 
+              class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 mb-4">
+        Cetak Prodi
+      </button>
 
       <!-- Tombol Tambah & Search -->
       <div class="flex justify-between items-center mb-4">

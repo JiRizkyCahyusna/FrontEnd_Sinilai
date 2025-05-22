@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\mahasiswa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class MahasiswaController extends Controller
 {
@@ -26,7 +27,21 @@ class MahasiswaController extends Controller
      */
     public function create()
     {
-         return view('tambah_mahasiswa');
+    $kelasResponse = Http::get('http://localhost:8080/kelas'); 
+    $prodiResponse = Http::get('http://localhost:8080/prodi');   
+
+    // Cek apakah keduanya berhasil
+    if ($kelasResponse->successful() && $prodiResponse->successful()) {
+        // Olah data agar terurut seperti di script kedua
+        $kelas = $kelasResponse->json();
+        $prodi = $prodiResponse->json();
+
+        return view('tambah_mahasiswa', compact('kelas', 'prodi'));
+    }
+
+    // Jika salah satu gagal, tetap kirim view tapi kosong
+    return view('tambah_mahasiswa', ['kelas' => [], 'prodi' => []])
+        ->withErrors(['msg' => 'Gagal mengambil data dari API']);
     }
 
     /**
@@ -35,10 +50,10 @@ class MahasiswaController extends Controller
     public function store(Request $request)
     {
          $validated = $request->validate([
-        'nama' => 'required|string|max:255',
-        'npm' => 'required|string|max:20',
-        'email' => 'required|email|max:255',
-        'prodi' => 'required|string|max:100',
+        'npm' => 'required',
+        'nama_mhs' => 'required',
+        'kode_kelas' => 'required',
+        'id_prodi' => 'required',
     ]);
 
     $response = Http::post('http://localhost:8080/mahasiswa', $validated);
@@ -61,16 +76,32 @@ class MahasiswaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($npm)
-    {
-         $response = Http::get("http://localhost:8080/mahasiswa/". $npm);
-        dd($response);
-    if ($response->successful()) {
-        $mahasiswa = (object) $response->json(); // <- ubah di sini
-        return view('edit_mahasiswa', ['mahasiswa' => $mahasiswa]);
+public function edit($npm)
+{
+    $mahasiswaResponse = Http::get("http://localhost:8080/mahasiswa/{$npm}");
+    $kelasResponse = Http::get("http://localhost:8080/kelas");
+    $prodiResponse = Http::get("http://localhost:8080/prodi");
+
+    if (
+        $mahasiswaResponse->successful() &&
+        $kelasResponse->successful() &&
+        $prodiResponse->successful()
+    ) {
+        $mahasiswa = $mahasiswaResponse->json();
+        // Kalau ternyata bentuknya [ {..} ], ambil index pertama
+        if (is_array($mahasiswa) && isset($mahasiswa[0])) {
+            $mahasiswa = $mahasiswa[0];
+        }
+
+        $kelas = $kelasResponse->json();
+        $prodi = $prodiResponse->json();
+
+        return view('edit_mahasiswa', compact('mahasiswa', 'kelas', 'prodi'));
     }
-    return redirect()->route('mahasiswa.index')->with('error', 'Data mahasiswa tidak ditemukan.');
-    }
+
+    return redirect()->route('mahasiswa.index')->with('error', 'Gagal mengambil data.');
+}
+
 
     /**
      * Update the specified resource in storage.
@@ -78,13 +109,13 @@ class MahasiswaController extends Controller
     public function update(Request $request, $npm)
     {
          $validatedData = $request->validate([
-        'nama' => 'required|string|max:255',
-        'npm' => 'required|string|max:20',
-        'email' => 'required|email|max:255',
-        'prodi' => 'required|string|max:100',
+        'npm' => 'required',
+        'nama_mhs' => 'required',
+        'kode_kelas' => 'required',
+        'id_prodi' => 'required',
     ]);
 
-    $response = Http::put("http://localhost:8080/mahasiswa/{$npm}", $validatedData);
+    $response = Http::put("http://localhost:8080/mahasiswa/$npm", $validatedData);
 
     if ($response->successful()) {
         return redirect()->route('mahasiswa.index')->with('success', 'Data mahasiswa berhasil diperbarui.');
@@ -98,7 +129,7 @@ class MahasiswaController extends Controller
      */
     public function destroy($npm)
     {
-          $response = Http::delete("http://localhost:8080/mahasiswa/{$npm}");
+          $response = Http::delete("http://localhost:8080/mahasiswa/$npm");
 
     if ($response->successful()) {
         return redirect()->route('mahasiswa.index')->with('success', 'Data mahasiswa berhasil dihapus.');
@@ -106,4 +137,14 @@ class MahasiswaController extends Controller
 
     return redirect()->route('mahasiswa.index')->with('error', 'Gagal menghapus data mahasiswa.');
     }
+
+public function exportPdf()
+{
+    $response = Http::get('http://localhost:8080/mahasiswa');
+    $mahasiswa = $response->json();
+
+    $pdf = Pdf::loadView('mahasiswa_pdf', ['mahasiswa' => $mahasiswa]);
+    return $pdf->stream('data_mahasiswa.pdf');
+}
+
 }
