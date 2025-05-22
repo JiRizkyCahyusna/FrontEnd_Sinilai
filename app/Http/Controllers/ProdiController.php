@@ -64,6 +64,7 @@ class ProdiController extends Controller
           $response = Http::get("http://localhost:8080/prodi/{$id_prodi}");
     if ($response->successful()) {
         $prodi = (object) $response->json(); // <- ubah di sini
+        // dd($prodi);
         return view('edit_prodi', ['prodi' => $prodi]);
     }
     return redirect()->route('prodi.index')->with('error', 'Data prodi tidak ditemukan.');
