@@ -1,61 +1,140 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Sistem Informasi Nilai
 
-## About Laravel
+## 🧾 Prasyarat
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Pastikan kamu sudah meng-install:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- **Laragon** (Download di: https://laragon.org)
+- **Git** (terpasang otomatis di Laragon)
+- **Composer** (terpasang otomatis di Laragon)
+- Browser (Chrome/Edge)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## 📥 Cara Clone & Install BackEnd
 
-## Learning Laravel
+Ikuti langkah-langkah di bawah ini untuk mulai menggunakan BackEnd dari Sistem Informasi Nilai:
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### 1. Clone Repositori
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+```bash
+git clone https://github.com/username/sistem-informasi-nilai-backeend.git
+cd sistem-informasi-nilai-
+```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 2. Install Dependency Backend
 
-## Laravel Sponsors
+```bash
+composer install
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### 3. Jalankan backend
 
-### Premium Partners
+```bash
+php spark serve
+```
+### 4. Import database 
+- Link Repositopory
+https://github.com/HanaKurnia/database_pbf
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+🗃️ Langkah Import Database
+Ikuti langkah berikut untuk mengimpor database agar backend Laravel bisa langsung digunakan:
 
-## Contributing
+1. Buka phpMyAdmin
+- Jalankan Laragon
+- Klik kanan ikon Laragon di system tray
+- Pilih Database > phpMyAdmin
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+2. Buat Database Baru
+- Klik New di sidebar kiri
+- Masukkan nama database, misalnya: sinilai2
+- Klik Create
 
-## Code of Conduct
+3. Import File SQL
+- Setelah database dibuat, klik database nilai_db
+- Pilih tab Import
+- Klik Choose File dan pilih file SQL kamu (misalnya nilai_db.sql)
+- Klik Go
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+📡 Cara Cek Endpoint API Laravel via Postman
+- Dosen
 
-## Security Vulnerabilities
+GET http://localhost:8080/dosen
+POST http://localhost:8080/dosen/{id dosen}
+DEL http://localhost:8080/dosen/{id dosen}
+PUT http://localhost:8080/dosen/{id dosen}
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+- Mahasiswa
 
-## License
+GET http://localhost:8080/mahasiswa
+POST http://localhost:8080/mahasiswa/{id mahasiswa}
+DEL http://localhost:8080/mahasiswa/{id mahasiswa}
+PUT http://localhost:8080/mahasiswa/{id mahasiswa}
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+- Kelas
+
+GET http://localhost:8080/kelas
+POST http://localhost:8080/kelas/{id kelas}
+DEL http://localhost:8080/kelas/{id kelas}
+PUT http://localhost:8080/kelas/{id kelas}
+
+- Mata Kuliah
+
+GET http://localhost:8080/matakuliah
+POST http://localhost:8080/matakuliah/{id mata kuliah}
+DEL http://localhost:8080/matakuliah/{id mata kuliah}
+PUT http://localhost:8080/matakuliah/{id mata kuliah}
+
+- Nilai
+
+GET http://localhost:8080/nilai
+POST http://localhost:8080/nilai/{id nilai}
+DEL http://localhost:8080/nilai/{id nilai}
+PUT http://localhost:8080/nilai/{id nilai}
+
+- Prodi
+
+GET http://localhost:8080/prodi
+POST http://localhost:8080/prodi/{id prodi}
+DEL http://localhost:8080/prodi/{id prodi}
+PUT http://localhost:8080/prodi/{id prodi}
+
+
+
+## 🌐 Setup Frontend
+
+Langkah Buat Project laravel 
+
+### 1. Buka Laragon
+- Jalankan Laragon
+- Klik kanan ikon **Laragon** di system tray
+- Pilih **Quick App > Laravel**
+- 
+### 2. Tambahkan Nama Folder (Opsional)
+Misalnya tambah jadi `sistem-informasi-nilai-frontEnd`
+
+### 3. Jalankan Laravel frondent
+```bash
+php artisan serve
+```
+
+## 📦 Membuat controller
+- Di terminal (Laragon atau VS Code), jalankan:
+
+```bash
+php artisan make:model dashboard -mcr
+```
+
+## 🧭 Tambahkan Routes dalam file web.php 
+Buka file routes/web.php dan tambahkan:
+```bash
+Route::get('/', function () {
+    return view('dashboard');
+});
+```
+
+## 🖼️ Membuat View
+- Di terminal (Laragon atau VS Code), jalankan:
+```bash
+php artisan make:view dashboard 
+```
+
