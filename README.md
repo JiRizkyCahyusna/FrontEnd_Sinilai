@@ -33,13 +33,7 @@ cp env example .env
 ```
 
 
-### 4. Jalankan backend
-
-```bash
-php spark serve
-```
-lalu cek dibrowser dengan link berikut: (http://localhost:8080)
-### 5. Import database 
+### 4. Import database 
 - Link Repositopory
 https://github.com/HanaKurnia/database_pbf
 
@@ -73,6 +67,14 @@ Ikuti langkah berikut untuk mengimpor database agar backend Laravel bisa langsun
 - Pilih tab Import
 - Klik Choose File dan pilih file SQL kamu (misalnya nilai_db.sql)
 - Klik Go
+- 
+### 5. Jalankan backend
+
+```bash
+php spark serve
+```
+lalu cek dibrowser dengan link berikut: (http://localhost:8080)
+
 
 📡 Cara Cek Endpoint API Laravel via Postman
 - Dosen
