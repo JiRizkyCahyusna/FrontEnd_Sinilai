@@ -141,7 +141,7 @@ PUT http://localhost:8080/prodi/{id prodi}
 - Pilih **Quick App > Laravel**
 
 ### 2. Tambahkan Nama Folder (Opsional)
-Misalnya tambah jadi `sistem-informasi-nilai-frontEnd`
+Misalnya tambah jadi `FrontEnd`
 
 ### 3. Ubah Session Driver di env 
 menjadi 
@@ -230,49 +230,6 @@ B. Isi file dashboard.blade.php dengan kode berikut
       </div>
       
     </section>
-
-    <!-- Data Mahasiswa
-    <section id="mahasiswa" class="page-content hidden">
-      <h2 class="text-3xl font-bold text-gray-700 mb-6">Data Mahasiswa Terbaru</h2>
-      <div class="bg-white p-6 rounded-xl shadow">
-        <div class="flex justify-between items-center mb-4">
-          <h3 class="text-xl font-semibold text-gray-700">Data Mahasiswa Terbaru</h3>
-          <a href="tambah.html" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">+ Tambah</a>
-        </div>
-        <table class="w-full table-auto text-sm text-left border">
-          <thead class="bg-blue-50">
-            <tr>
-              <th class="p-2">No</th>
-              <th class="p-2">Nama</th>
-              <th class="p-2">Username</th>
-              <th class="p-2">Email</th>
-              <th class="p-2">Jenis Kelamin</th>
-              <th class="p-2">Telp</th>
-              <th class="p-2">Aksi</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="border-t hover:bg-gray-50">
-              <td class="p-2">1</td>
-              <td class="p-2">ROHMAN</td>
-              <td class="p-2">rohman</td>
-              <td class="p-2">rohman@gmail.com</td>
-              <td class="p-2">Pria</td>
-              <td class="p-2">081212341234</td>
-              <td class="p-2">
-                <a href="edit.html" class="text-blue-600 hover:underline">Edit</a>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section> -->
-
-    <!-- Data Dosen
-    <section id="dosen" class="page-content hidden">
-      <h2 class="text-3xl font-bold text-gray-700 mb-6">Data Dosen</h2>
-      <p class="text-gray-600">Konten data dosen akan muncul di sini.</p>
-    </section> -->
   </main>
 
   <!-- <script>
@@ -464,54 +421,10 @@ Route::resource('kelas', KelasController::class);
 Route::resource('prodi', ProdiController::class);
 ```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-### 3. Jalankan Laravel frontend
+## 7. Jalankan Laravel frontend
 ```bash
 php artisan serve
 ```
 setelah menjalankan laravel frontend, akan muncul output: Server running on [http://127.0.0.1:8000]. lalu Press Ctrl+C to stop the server
 
-
-## 📦 Membuat Controller, Model, Migration sekaligus (contoh: Dashboard)
-- Di terminal (Laragon atau VS Code), jalankan:
-```bash
-php artisan make:model dashboard -mcr
-```
--m : buat migration file
--c : buat controller
--r : buat controller resource (CRUD)
-
-## 🧭 Tambahkan Routes dalam file web.php 
-- Buka file routes/web.php dan tambahkan:
-```bash
-Route::get('/', function () {
-    return view('dashboard');
-});
-```
-
-## 🖼️ Membuat View
-- Di terminal (Laragon atau VS Code), jalankan:
-```bash
-php artisan make:view dashboard 
-```
 
