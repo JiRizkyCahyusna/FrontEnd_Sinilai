@@ -27,13 +27,19 @@ cd backend
 composer install
 ```
 
-### 3. Jalankan backend
+### 3. Mengcopy File Environment
+```bash
+cp .env.example .env
+```
+
+
+### 4. Jalankan backend
 
 ```bash
 php spark serve
 ```
 lalu cek dibrowser dengan link berikut: (http://localhost:8080)
-### 4. Import database 
+### 5. Import database 
 - Link Repositopory
 https://github.com/HanaKurnia/database_pbf
 
