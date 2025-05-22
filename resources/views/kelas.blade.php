@@ -38,7 +38,7 @@
     <span>Data Kelas</span>
   </a>
   <a href="{{ route('prodi.index') ?? '#' }}" class="flex items-center gap-3 px-3 py-2 rounded hover:bg-blue-600 text-blue-100">
-    <i data-feather="users"></i>
+    <i data-feather="book"></i>
     <span>Data Prodi</span>
   </a>
 </nav>

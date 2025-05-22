@@ -17,7 +17,7 @@
       <path stroke-linecap="round" stroke-linejoin="round" d="M12 14l9-5-9-5-9 5 9 5z" />
       <path stroke-linecap="round" stroke-linejoin="round" d="M12 14l6.16-3.422a12.083 12.083 0 01.84 4.906c0 3.042-1.129 5.824-3.16 7.416a6.987 6.987 0 01-6.16 0c-2.031-1.592-3.16-4.374-3.16-7.416a12.083 12.083 0 01.84-4.906L12 14z" />
     </svg>
-    <h1 class="text-2xl font-bold text-blue-100">Sistem Akademik</h1>
+    <h1 class="text-2xl font-bold text-blue-100">Sistem Informasi Nilai</h1>
   </div>
 
     <div class="mb-6">
@@ -39,7 +39,7 @@
     <span>Data Kelas</span>
   </a>
   <a href="{{ route('prodi.index') }}" class="flex items-center gap-3 px-3 py-2 rounded hover:bg-blue-600 text-blue-100">
-    <i data-feather="users"></i>
+    <i data-feather="book"></i>
     <span>Data Prodi</span>
   </a>
 </nav>
@@ -53,21 +53,47 @@
         <i data-feather="home" class="text-blue-600"></i> Dashboard
       </h2>
 
+        <!-- Kotak selamat datang -->
+  <div class="bg-white rounded-xl shadow-md p-6 mb-8 text-center">
+    <h3 class="text-3xl font-bold text-gray-800 mb-2">👋 Selamat Datang di Sistem Akademik</h3>
+    <p class="text-gray-600 text-lg">Kelola data mahasiswa, kelas, dan program studi dengan mudah.</p>
+  </div>
+
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-        <div class="bg-blue-400 text-white p-6 rounded-xl shadow hover:shadow-md transition">
-          <p class="text-3xl font-bold">2</p>
-          <p class="mt-1">Mahasiswa</p>
-        </div>
-        <div class="bg-indigo-400 text-white p-6 rounded-xl shadow hover:shadow-md transition">
-          <p class="text-3xl font-bold">1</p>
-          <p class="mt-1">Kelas</p>
-        </div>
-        <div class="bg-cyan-400 text-white p-6 rounded-xl shadow hover:shadow-md transition">
-          <p class="text-3xl font-bold">3</p>
-          <p class="mt-1">Program Studi</p>
-        </div>
+  <!-- Mahasiswa -->
+  <div class="bg-blue-400 text-white p-6 rounded-xl shadow hover:shadow-md transition">
+    <div class="flex items-center justify-between">
+      <div>
+        <p class="text-3xl font-bold">2</p>
+        <p class="mt-1">Mahasiswa</p>
       </div>
-      
+      <div class="text-4xl">🎓</div>
+    </div>
+  </div>
+
+  <!-- Kelas -->
+  <div class="bg-indigo-400 text-white p-6 rounded-xl shadow hover:shadow-md transition">
+    <div class="flex items-center justify-between">
+      <div>
+        <p class="text-3xl font-bold">1</p>
+        <p class="mt-1">Kelas</p>
+      </div>
+      <div class="text-4xl">🏫</div>
+    </div>
+  </div>
+
+  <!-- Program Studi -->
+  <div class="bg-cyan-400 text-white p-6 rounded-xl shadow hover:shadow-md transition">
+    <div class="flex items-center justify-between">
+      <div>
+        <p class="text-3xl font-bold">3</p>
+        <p class="mt-1">Program Studi</p>
+      </div>
+      <div class="text-4xl">📚</div>
+    </div>
+  </div>
+</div>
+
     </section>
 
     <!-- Data Mahasiswa

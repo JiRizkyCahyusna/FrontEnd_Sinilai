@@ -38,7 +38,7 @@
     <span>Data kelas</span>
   </a>
   <a href="{{ route('prodi.index') }}" class="flex items-center gap-3 px-3 py-2 rounded bg-white text-blue-800 font-semibold">
-    <i data-feather="users"></i>
+    <i data-feather="book"></i>
     <span>Data Prodi</span>
   </a>
 </nav>
@@ -48,7 +48,7 @@
   <main class="flex-1 p-8 min-h-screen overflow-auto">
     <section>
       <h2 class="text-3xl font-bold text-gray-700 mb-6 flex items-center gap-2">
-        <i data-feather="users" class="text-blue-600"></i> Data prodi
+        <i data-feather="book" class="text-blue-600"></i> Data prodi
       </h2>
 
       <!-- Tombol Tambah & Search -->
