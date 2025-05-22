@@ -43,6 +43,12 @@
     <span>Data Prodi</span>
   </a>
 </nav>
+<form action="{{ route('logout') }}" method="POST" class="mt-auto pt-4">
+    @csrf
+    <button type="submit" class="w-full text-left px-3 py-2 rounded hover:bg-red-600 hover:text-white text-red-400 font-semibold">
+        <i data-feather="log-out"></i> Logout
+    </button>
+</form>
   </aside>
 
   <!-- Main Content -->
