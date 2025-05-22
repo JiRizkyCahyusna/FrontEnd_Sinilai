@@ -55,7 +55,7 @@
 
         <!-- Kotak selamat datang -->
   <div class="bg-white rounded-xl shadow-md p-6 mb-8 text-center">
-    <h3 class="text-3xl font-bold text-gray-800 mb-2">👋 Selamat Datang di Sistem Akademik</h3>
+    <h3 class="text-3xl font-bold text-gray-800 mb-2">✨Selamat Datang di Sistem Informasi Nilai✨</h3>
     <p class="text-gray-600 text-lg">Kelola data mahasiswa, kelas, dan program studi dengan mudah.</p>
   </div>
 
