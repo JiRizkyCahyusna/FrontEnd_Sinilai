@@ -32,6 +32,7 @@ composer install
 ```bash
 php spark serve
 ```
+lalu cek dibrowser dengan link berikut: (http://localhost:8080)
 ### 4. Import database 
 - Link Repositopory
 https://github.com/HanaKurnia/database_pbf
@@ -131,10 +132,11 @@ Langkah Buat Project laravel
 ### 2. Tambahkan Nama Folder (Opsional)
 Misalnya tambah jadi `sistem-informasi-nilai-frontEnd`
 
-### 3. Jalankan Laravel frondent
+### 3. Jalankan Laravel frontend
 ```bash
 php artisan serve
 ```
+setelah menjalankan laravel frontend, akan muncul output: Server running on [http://127.0.0.1:8000]. lalu Press Ctrl+C to stop the server
 
 ## 📦 Membuat Controller, Model, Migration sekaligus (contoh: Dashboard)
 - Di terminal (Laragon atau VS Code), jalankan:
