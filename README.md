@@ -642,3 +642,80 @@ php artisan serve
 setelah menjalankan laravel frontend, akan muncul output: Server running on [http://127.0.0.1:8000]. lalu Press Ctrl+C to stop the server
 
 
+## Export PDF
+1. Install package DOMPDF:
+
+```bash
+composer require barryvdh/laravel-dompdf
+```
+2. tambahkan route pdf di routes web.php
+```bash
+use App\Http\Controllers\MahasiswaController;
+
+Route::get('/mahasiswa/export-pdf', [MahasiswaController::class, 'exportPdf'])->name('mahasiswa.exportPdf');
+```
+3. Tambahkan Method exportPdf di MahasiswaController.php
+```bash
+use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\Http;
+
+public function exportPdf()
+{
+    $response = Http::get('http://localhost:8080/mahasiswa');
+    if (!$response->successful()) {
+        return back()->withErrors(['msg' => 'Gagal mengambil data mahasiswa']);
+    }
+
+    $mahasiswa = $response->json();
+
+    $pdf = Pdf::loadView('mahasiswa_pdf', ['mahasiswa' => $mahasiswa]);
+    return $pdf->download('data_mahasiswa.pdf');
+}
+```
+4. Buat View di resources/views/mahasiswa_pdf.blade.php
+```bash
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body { font-family: sans-serif; font-size: 12px; }
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    th, td { border: 1px solid #000; padding: 6px; text-align: left; }
+    th { background: #f0f0f0; }
+  </style>
+</head>
+<body>
+  <h2>Data Mahasiswa</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>No</th>
+        <th>NPM</th>
+        <th>Nama</th>
+        <th>Kelas</th>
+        <th>Prodi</th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach ($mahasiswa as $i => $mhs)
+      <tr>
+        <td>{{ $i + 1 }}</td>
+        <td>{{ $mhs['npm'] }}</td>
+        <td>{{ $mhs['nama_mahasiswa'] }}</td>
+        <td>{{ $mhs['nama_kelas'] ?? $mhs['id_kelas'] }}</td>
+        <td>{{ $mhs['nama_prodi'] ?? $mhs['kode_prodi'] }}</td>
+      </tr>
+      @endforeach
+    </tbody>
+  </table>
+</body>
+</html>
+```
+
+5. Tambahkan Tombol Export di View (misalnya dashboard.blade.php)
+```bash
+<a href="{{ route('mahasiswa.exportPdf') }}" target="_blank" class="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 inline-block">
+  📄 Export PDF
+</a>
+```
