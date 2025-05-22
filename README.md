@@ -60,43 +60,61 @@ Ikuti langkah berikut untuk mengimpor database agar backend Laravel bisa langsun
 - Dosen
 
 GET http://localhost:8080/dosen
+
 POST http://localhost:8080/dosen/{id dosen}
+
 DEL http://localhost:8080/dosen/{id dosen}
+
 PUT http://localhost:8080/dosen/{id dosen}
 
 - Mahasiswa
 
 GET http://localhost:8080/mahasiswa
+
 POST http://localhost:8080/mahasiswa/{id mahasiswa}
+
 DEL http://localhost:8080/mahasiswa/{id mahasiswa}
+
 PUT http://localhost:8080/mahasiswa/{id mahasiswa}
 
 - Kelas
 
 GET http://localhost:8080/kelas
+
 POST http://localhost:8080/kelas/{id kelas}
+
 DEL http://localhost:8080/kelas/{id kelas}
+
 PUT http://localhost:8080/kelas/{id kelas}
 
 - Mata Kuliah
 
 GET http://localhost:8080/matakuliah
+
 POST http://localhost:8080/matakuliah/{id mata kuliah}
+
 DEL http://localhost:8080/matakuliah/{id mata kuliah}
+
 PUT http://localhost:8080/matakuliah/{id mata kuliah}
 
 - Nilai
 
 GET http://localhost:8080/nilai
+
 POST http://localhost:8080/nilai/{id nilai}
+
 DEL http://localhost:8080/nilai/{id nilai}
+
 PUT http://localhost:8080/nilai/{id nilai}
 
 - Prodi
 
 GET http://localhost:8080/prodi
+
 POST http://localhost:8080/prodi/{id prodi}
+
 DEL http://localhost:8080/prodi/{id prodi}
+
 PUT http://localhost:8080/prodi/{id prodi}
 
 
