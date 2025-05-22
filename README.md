@@ -296,6 +296,7 @@ database/migrations/xxxx_xx_xx_create_prodis_table.php
 app/Http/Controllers/ProdiController.php
 
 B. Isi file ProdiController.php dengan kode berikut
+```bash
 <?php
 
 namespace App\Http\Controllers;
@@ -401,6 +402,7 @@ class ProdiController extends Controller
     return redirect()->route('prodi.index')->with('error', 'Gagal menghapus data prodi.');
     }
 }
+```
 
 ## 6. 🧭 Tambahkan Routes dalam file web.php 
 - Buka file routes/web.php dan tambahkan:
