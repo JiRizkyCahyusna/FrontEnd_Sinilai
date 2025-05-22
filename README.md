@@ -147,7 +147,10 @@ PUT http://localhost:8080/prodi/{id prodi}
 - Jalankan Laragon
 - Klik kanan ikon **Laragon** di system tray
 - Pilih **Quick App > Laravel**
-
+atau lewat terminal
+```bash
+composer create-priject laravel/laravel (nama-projek)
+```
 ### 2. Tambahkan Nama Folder (Opsional)
 Misalnya tambah jadi `FrontEnd`
 
