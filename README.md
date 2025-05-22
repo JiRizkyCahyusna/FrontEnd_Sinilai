@@ -136,15 +136,17 @@ Misalnya tambah jadi `sistem-informasi-nilai-frontEnd`
 php artisan serve
 ```
 
-## 📦 Membuat controller
+## 📦 Membuat Controller, Model, Migration sekaligus (contoh: Dashboard)
 - Di terminal (Laragon atau VS Code), jalankan:
-
 ```bash
 php artisan make:model dashboard -mcr
 ```
+-m : buat migration file
+-c : buat controller
+-r : buat controller resource (CRUD)
 
 ## 🧭 Tambahkan Routes dalam file web.php 
-Buka file routes/web.php dan tambahkan:
+- Buka file routes/web.php dan tambahkan:
 ```bash
 Route::get('/', function () {
     return view('dashboard');
